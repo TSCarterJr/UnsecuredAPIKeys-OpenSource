@@ -79,6 +79,13 @@ cp UnsecuredAPIKeys.Bots.Verifier/appsettings.example.json UnsecuredAPIKeys.Bots
 ```
 
 ### 3. Start the Database
+
+**Option A: Docker Compose (recommended for dev)**
+```bash
+docker compose up -d db
+```
+
+**Option B: One-off container**
 ```bash
 docker run --name unsecured-api-keys-db \
   -e POSTGRES_DB=UnsecuredAPIKeys \
@@ -86,6 +93,15 @@ docker run --name unsecured-api-keys-db \
   -e POSTGRES_PASSWORD=your_password \
   -p 5432:5432 \
   -d postgres:15
+```
+
+### Stopping the database
+```bash
+docker compose down
+```
+To also remove the dev volume:
+```bash
+docker compose down -v
 ```
 
 ### 4. Run Database Migrations
@@ -119,6 +135,7 @@ dotnet run
 - **UI**: http://localhost:3000
 - **API**: http://localhost:7227
 - **API Documentation**: http://localhost:7227/scalar/v1
+
 
 ## 📚 Documentation
 
